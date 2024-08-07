@@ -11,7 +11,7 @@ const Wild = () => {
   const [energy, setEnergy] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
   const [userId, setUserId] = useState(null);
-  
+
   const id = 761748561
   const backURLEnergy = `${import.meta.env.VITE_BACKEND_WS_URL}/energy_gain/${id}/`;
   const backURLCoins = `${import.meta.env.VITE_BACKEND_WS_URL}/coins_gain/${id}/`;
@@ -30,6 +30,7 @@ const Wild = () => {
       console.log('Telegram WebApp не доступен.');
     }
   }, []);
+  
   // const handleEnergyEvents = {
   //   onOpen: (event: Event) => console.log(),
   //   onMessage: (event: Event) => { },
