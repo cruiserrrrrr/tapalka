@@ -9,6 +9,9 @@ export default defineConfig({
       '@': path.resolve(process.cwd(), './src'),
     },
   },
+  server: {
+    port: 8000,
+  },
   css: {
     preprocessorOptions: {
       scss: {
