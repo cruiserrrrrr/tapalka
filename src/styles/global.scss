@@ -1,0 +1,41 @@
+@import "./fonts";
+
+:root {
+  --white-color: rgba(255, 255, 255, 1);
+  --white-color-50: rgba(255, 255, 255, 0.5);
+  --main-bg-color: rgba(34, 0, 27, 1);
+  --bg-secondary-color: rgba(25, 3, 31, 1);
+  --orange-gradient: linear-gradient(91.7deg, #FF6E05 0%, #F83C27 99.37%);
+  --violet-color: rgba(203, 16, 172, 1);
+  --violet-secondary-color: rgba(102, 73, 109, 1);
+  --br-normal: 20px;
+  --br-big: 51px;
+}
+
+body {
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: var(--white-color);
+  background-color: var(--main-bg-color);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  min-height: 100dvh;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+a {
+  color: var(--white-color);
+}
+
+img{
+  user-select: none;
+}

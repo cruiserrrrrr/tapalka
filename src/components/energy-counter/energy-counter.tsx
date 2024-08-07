@@ -1,0 +1,39 @@
+import { useEffect } from "react";
+import styles from "./energy-counter.module.scss";
+import useWebSocket from "react-use-websocket";
+
+interface IEnergyCounter {
+  defaultEnergy: number;
+  socketURL: string;
+  handleClick?: () => void;
+}
+
+const EnergyCounter = (props: IEnergyCounter) => {
+  const { defaultEnergy, socketURL, handleClick } = props
+  const { sendMessage, lastMessage, readyState } = useWebSocket(socketURL);
+
+  const energyPercent = Math.round((defaultEnergy / 4500) * 100);
+  console.log(readyState, 'readyState energy')
+  useEffect(() => {
+    if (readyState !== 1) return
+    sendMessage(JSON.stringify({ energy: defaultEnergy - 1 }))
+  }, [defaultEnergy])
+
+  console.log(defaultEnergy, 'defaultEnergy')
+  return (
+    <div className={styles.wrap}>
+      <p className={styles.text}>Your Energy: 95%</p>
+      <div className={styles.container}>
+        <p className={styles.text}>{defaultEnergy}</p>
+        <div
+          className={styles.energy_band}
+          style={{
+            width: `${energyPercent}%`,
+          }}
+        />
+      </div>
+    </div>
+  );
+};
+
+export default EnergyCounter;

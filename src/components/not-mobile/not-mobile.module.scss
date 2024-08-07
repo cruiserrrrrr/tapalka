@@ -1,0 +1,11 @@
+.wrap {
+  height: 100dvh;
+  width: 100svw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .title {
+    text-align: center;
+  }
+}

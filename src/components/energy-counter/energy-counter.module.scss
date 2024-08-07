@@ -1,0 +1,40 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 10px;
+  max-width: 120px;
+
+  .container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: var(--main-bg-color);
+    max-width: 120px;
+    border-radius: var(--br-big);
+    overflow: hidden;
+    padding: 8px;
+
+    .energy_band {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: var(--orange-gradient);
+      height: 100%;
+      z-index: 0;
+      transition: all .25s ease;
+    }
+  }
+}
+
+.text {
+  font-family: Qanelas;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 14.48px;
+  text-align: center;
+  z-index: 1;
+}

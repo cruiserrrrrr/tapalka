@@ -1,0 +1,46 @@
+.wrap {
+  width: 100%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  padding-top: 64px;
+
+  .container {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    justify-content: center;
+    padding: 19px;
+    background-color: var(--violet-secondary-color);
+    border: 1px solid var(--white-color);
+    border-radius: var(--br-normal);
+    overflow: hidden;
+
+    .coin {
+      width: 30px;
+      height: 30px;
+      aspect-ratio: 1;
+      z-index: 1;
+    }
+
+    .coins {
+      font-family: "Japanese 3017";
+      font-size: 48px;
+      font-weight: 400;
+      line-height: 55.22px;
+      text-align: center;
+      z-index: 1;
+    }
+
+    .splash {
+      position: absolute;
+      top: 0;
+      right: 0;
+      object-fit: cover;
+      z-index: 0;
+    }
+  }
+}

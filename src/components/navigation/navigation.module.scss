@@ -1,0 +1,22 @@
+.container {
+  position: absolute;
+  left: 22px;
+  bottom: 30px;
+  width: calc(100% - 44px);
+  padding: 2px;
+  // background-image: linear-gradient(to bottom, #400032 -16.13%, rgba(255, 255, 255, .5) 100%);
+  background-image: linear-gradient(to bottom, #400032 -16.13%, rgba(255, 255, 255, .5) 50%, #400032 100%);
+  overflow: hidden;
+  border-radius: var(--br-normal);
+
+  .wrap {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 25px;
+    padding: 25px;
+    background-color: var(--bg-secondary-color);
+    border-radius: var(--br-normal);
+  }
+}
