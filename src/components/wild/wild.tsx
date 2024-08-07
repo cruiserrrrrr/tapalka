@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import Clicker from "../clicker/clicker";
 import CoinsCounter from "../coins-counter/coins-counter";
 import EnergyCounter from "../energy-counter/energy-counter";
@@ -10,27 +10,28 @@ const Wild = () => {
   const [coins, setConins] = useState<number>(0);
   const [energy, setEnergy] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  //@ts-ignore
   const [userId, setUserId] = useState(null);
 
   const id = 761748561
   const backURLEnergy = `${import.meta.env.VITE_BACKEND_WS_URL}/energy_gain/${id}/`;
   const backURLCoins = `${import.meta.env.VITE_BACKEND_WS_URL}/coins_gain/${id}/`;
-  useEffect(() => {
-    // Проверяем, доступен ли объект Telegram.WebApp
-    if (window.Telegram && window.Telegram.WebApp) {
-      const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
+  // useEffect(() => {
+  //   // Проверяем, доступен ли объект Telegram.WebApp
+  //   if (window.Telegram && window.Telegram.WebApp) {
+  //     const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
 
-      // Проверяем, существует ли пользовательская информация
-      if (initDataUnsafe && initDataUnsafe.user) {
-        setUserId(initDataUnsafe.user.id);
-      } else {
-        console.log('Пользовательская информация недоступна.');
-      }
-    } else {
-      console.log('Telegram WebApp не доступен.');
-    }
-  }, []);
-  
+  //     // Проверяем, существует ли пользовательская информация
+  //     if (initDataUnsafe && initDataUnsafe.user) {
+  //       setUserId(initDataUnsafe.user.id);
+  //     } else {
+  //       console.log('Пользовательская информация недоступна.');
+  //     }
+  //   } else {
+  //     console.log('Telegram WebApp не доступен.');
+  //   }
+  // }, []);
+
   // const handleEnergyEvents = {
   //   onOpen: (event: Event) => console.log(),
   //   onMessage: (event: Event) => { },

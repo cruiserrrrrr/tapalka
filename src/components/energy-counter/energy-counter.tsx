@@ -9,7 +9,9 @@ interface IEnergyCounter {
 }
 
 const EnergyCounter = (props: IEnergyCounter) => {
+  //@ts-ignore
   const { defaultEnergy, socketURL, handleClick } = props
+  //@ts-ignore
   const { sendMessage, lastMessage, readyState } = useWebSocket(socketURL);
 
   const energyPercent = Math.round((defaultEnergy / 4500) * 100);
@@ -22,7 +24,7 @@ const EnergyCounter = (props: IEnergyCounter) => {
   console.log(defaultEnergy, 'defaultEnergy')
   return (
     <div className={styles.wrap}>
-      <p className={styles.text}>Your Energy: 95%</p>
+      <p className={styles.text}>Your Energy: {energyPercent}%</p>
       <div className={styles.container}>
         <p className={styles.text}>{defaultEnergy}</p>
         <div

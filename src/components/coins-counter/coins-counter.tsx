@@ -1,18 +1,17 @@
 import styles from "./coins-counter.module.scss";
 import coinImage from "../../assets/coin.png";
 import splashImage from "../../assets/total-coins-splash.png";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import useWebSocket from "react-use-websocket";
 
 interface ICoinsCounter {
   defaultCoins: number;
   socketURL: string;
-  handleClick?: () => void;
 }
 
 const CoinsCounter = (props: ICoinsCounter) => {
-  const { defaultCoins, socketURL, handleClick } = props;
-
+  const { defaultCoins, socketURL } = props;
+  //@ts-ignore
   const { sendMessage, lastMessage, readyState } = useWebSocket(socketURL);
   console.log(readyState, 'readyState coins')
 
