@@ -27,7 +27,8 @@ const EnergyCounter = (props: IEnergyCounter) => {
   // const b = a.get('asd')
   // console.log(b)
   // @ts-ignore
-  const [ initData ] = initInitData();
+
+  const initData = initInitData();
   console.log(initData, 'initData')
   // const parsedinitData = JSON.parse(initData);
   // const userParsed = JSON.parse(parsedinitData.user).id;
