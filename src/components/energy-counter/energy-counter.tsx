@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import styles from "./energy-counter.module.scss";
 import useWebSocket from "react-use-websocket";
-import { initInitData } from '@telegram-apps/sdk';
+// import { initInitData } from '@telegram-apps/sdk';
 
 interface IEnergyCounter {
   defaultEnergy: number;
@@ -21,14 +21,16 @@ const EnergyCounter = (props: IEnergyCounter) => {
     sendMessage(JSON.stringify({ energy: defaultEnergy - 1 }))
   }, [defaultEnergy]);
 
-  
-  // @ts-ignore
-  const [ initData ] = initInitData();
 
+  // @ts-ignore
+  // const [ initData ] = initInitData();
+
+  const searchParamsString = new URLSearchParams(window.location.search).toString();
 
   return (
     <div className={styles.wrap}>
-      <p className={styles.text}>Your Energy: {energyPercent}% id {initData.user.id}</p>
+      <p className={styles.text}>Your Energy: {energyPercent}% id</p>
+      <p>searchParamsString</p>
       <div className={styles.container}>
         <p className={styles.text}>{defaultEnergy}</p>
         <div
