@@ -1,5 +1,4 @@
 import { Route, Routes } from 'react-router-dom';
-// import Navigation from '../components/navigation/navigation';
 import NotMobile from '../components/not-mobile/not-mobile';
 import Wild from '../components/wild/wild';
 import useMediaQuery from '../services/hooks/useMediaQuery';

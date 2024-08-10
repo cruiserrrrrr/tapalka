@@ -13,7 +13,6 @@ const CoinsCounter = (props: ICoinsCounter) => {
   const { defaultCoins, socketURL } = props;
   //@ts-ignore
   const { sendMessage, lastMessage, readyState } = useWebSocket(socketURL);
-  console.log(readyState, 'readyState coins')
 
   useEffect(() => {
     if (readyState !== 1) return
