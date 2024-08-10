@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import styles from "./energy-counter.module.scss";
 import useWebSocket from "react-use-websocket";
+import { initInitData } from '@telegram-apps/sdk';
 
 interface IEnergyCounter {
   defaultEnergy: number;
@@ -18,29 +19,16 @@ const EnergyCounter = (props: IEnergyCounter) => {
   useEffect(() => {
     if (readyState !== 1) return
     sendMessage(JSON.stringify({ energy: defaultEnergy - 1 }))
-  }, [defaultEnergy])
+  }, [defaultEnergy]);
 
-  const [userId, setUserId] = useState<string | null>(null);
+  
+  // @ts-ignore
+  const [ initData ] = initInitData();
 
-  useEffect(() => {
-    // @ts-ignore
-    let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
-
-    if(!tg) return;
-    // let usercard = document.getElementById("usercard"); 
-
-    // profName.innerText = `${tg.initDataUnsafe.user.first_name}
-    // ${tg.initDataUnsafe.user.last_name}
-    // ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
-    //выдем имя, "фамилию", через тире username и код языка
-
-    // userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
-    setUserId(tg.initDataUnsafe.user.id)
-  }, []);
 
   return (
     <div className={styles.wrap}>
-      <p className={styles.text}>Your Energy: {energyPercent}% id {userId}</p>
+      <p className={styles.text}>Your Energy: {energyPercent}% id {initData.user.id}</p>
       <div className={styles.container}>
         <p className={styles.text}>{defaultEnergy}</p>
         <div
