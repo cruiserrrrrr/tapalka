@@ -85,6 +85,7 @@ const Clicker = (props: IClicker) => {
     setTimeout(() => {
       setList(prevList => prevList.filter(item => item !== clickCoordinates));
     }, 1000)
+    click();
   }
   
   return (
