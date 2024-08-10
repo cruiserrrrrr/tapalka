@@ -23,24 +23,24 @@ const EnergyCounter = (props: IEnergyCounter) => {
   const [userId, setUserId] = useState<string | null>(null);
 
   useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const userData = urlParams.get('tgWebAppData');
-    
-    if (userData) {
-      try {
-        const parsedData = JSON.parse(userData);
-        const userId = parsedData.user?.id;
-        setUserId(userId);
-      } catch (error) {
-        console.error('Ошибка при парсинге данных пользователя:', error);
-      }
-    }
+    // @ts-ignore
+    let tg = window.Telegram.WebApp; //получаем объект webapp телеграма 
+
+    if(!tg) return;
+    // let usercard = document.getElementById("usercard"); 
+
+    // profName.innerText = `${tg.initDataUnsafe.user.first_name}
+    // ${tg.initDataUnsafe.user.last_name}
+    // ${tg.initDataUnsafe.user.username} (${tg.initDataUnsafe.user.language_code})`;
+    //выдем имя, "фамилию", через тире username и код языка
+
+    // userid.innerText = `${tg.initDataUnsafe.user.id}`; //показываем user_id
+    setUserId(tg.initDataUnsafe.user.id)
   }, []);
 
   return (
     <div className={styles.wrap}>
       <p className={styles.text}>Your Energy: {energyPercent}% id {userId}</p>
-      <p>search {window.location.search}</p>
       <div className={styles.container}>
         <p className={styles.text}>{defaultEnergy}</p>
         <div
