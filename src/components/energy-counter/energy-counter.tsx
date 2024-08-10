@@ -1,7 +1,8 @@
 import { useEffect } from "react";
 import styles from "./energy-counter.module.scss";
 import useWebSocket from "react-use-websocket";
-import { initInitData } from '@telegram-apps/sdk';
+// import { initInitData } from '@telegram-apps/sdk';
+// import { useSearchParams } from "react-router-dom";
 
 interface IEnergyCounter {
   defaultEnergy: number;
@@ -21,37 +22,41 @@ const EnergyCounter = (props: IEnergyCounter) => {
     sendMessage(JSON.stringify({ energy: defaultEnergy - 1 }))
   }, [defaultEnergy]);
 
-
+  // const searchParams = window.location.search;
+  // const a = new URLSearchParams(searchParams);
+  // const b = a.get('asd')
+  // console.log(b)
+  console.log(window.location.search, 'window.location.search')
   // @ts-ignore
-  const [ initData ] = initInitData();
-  const parsedinitData = JSON.parse(initData);
-  const userParsed = JSON.parse(parsedinitData.user).id;
-  const initDataRaw = new URLSearchParams([
-    ['user', JSON.stringify({
-      id: 99281932,
-      first_name: 'Andrew',
-      last_name: 'Rogue',
-      username: 'rogue',
-      language_code: 'en',
-      is_premium: true,
-      allows_write_to_pm: true,
-    })],
-    ['hash', '89d6079ad6762351f38c6dbbc41bb53048019256a9443988af7a48bcad16ba31'],
-    ['auth_date', '1716922846'],
-    ['start_param', 'debug'],
-    ['chat_type', 'sender'],
-    ['chat_instance', '8428209589180549439'],
-  ]);
-  const user = initDataRaw.get('user');
-  //@ts-ignore
-  const id = JSON.parse(user).id;
+  // const [ initData ] = initInitData();
+  // const parsedinitData = JSON.parse(initData);
+  // const userParsed = JSON.parse(parsedinitData.user).id;
+  // const initDataRaw = new URLSearchParams([
+  //   ['user', JSON.stringify({
+  //     id: 99281932,
+  //     first_name: 'Andrew',
+  //     last_name: 'Rogue',
+  //     username: 'rogue',
+  //     language_code: 'en',
+  //     is_premium: true,
+  //     allows_write_to_pm: true,
+  //   })],
+  //   ['hash', '89d6079ad6762351f38c6dbbc41bb53048019256a9443988af7a48bcad16ba31'],
+  //   ['auth_date', '1716922846'],
+  //   ['start_param', 'debug'],
+  //   ['chat_type', 'sender'],
+  //   ['chat_instance', '8428209589180549439'],
+  // ]);
+  // const user = initDataRaw.get('user');
+  // //@ts-ignore
+  // const id = JSON.parse(user).id;
   return (
     <div className={styles.wrap}>
       <p className={styles.text}>Your Energy: {energyPercent}% id</p>
       <p>searchParamsString</p>
-      <p>id {id}</p>
+      {/* <p>id {id}</p> */}
 
-      <p>userParsed {userParsed}</p>
+      {/* <p>userParsed {userParsed}</p> */}
       <div className={styles.container}>
         <p className={styles.text}>{defaultEnergy}</p>
         <div
