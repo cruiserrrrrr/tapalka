@@ -1,6 +1,8 @@
 import styles from "./clicker.module.scss";
-import clickerImage from "../../assets/blackberry.png";
-import { useRef } from "react";
+import clickerImage from "../../assets/images/blackberry.png";
+import { useRef, useState } from "react";
+import IncrementFlash from "./Increment-flash/Increment-flash";
+import { v4 as uuidv4 } from 'uuid';
 
 interface IClicker {
   click: () => void;
@@ -10,9 +12,41 @@ const Clicker = (props: IClicker) => {
   // @ts-ignore
   const { click } = props;
 
+  const [list, setList] = useState<any[]>([]);
   const wrapRef = useRef<HTMLDivElement>(null);
+  // const handleClick = (e: React.MouseEvent | React.TouchEvent | React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  //   const container = wrapRef.current;
+  //   if (!container) return;
 
-  const handleClick = (e: React.MouseEvent | React.TouchEvent) => {
+  //   const rect = container.getBoundingClientRect();
+  //   const centerX = rect.left + rect.width / 2;
+  //   const centerY = rect.top + rect.height / 2;
+
+  //   let clientX: number, clientY: number;
+
+
+  //   if ('touches' in e) {
+  //     clientX = e.touches[0].clientX;
+  //     clientY = e.touches[0].clientY;
+  //   } else {
+  //     clientX = e.clientX;
+  //     clientY = e.clientY;
+  //   }
+
+  //   const deltaX = clientX - centerX;
+  //   const deltaY = clientY - centerY;
+  //   const maxTilt = 15; // Максимальный угол наклона
+  //   const tiltX = (deltaY / rect.height) * maxTilt;
+  //   const tiltY = -(deltaX / rect.width) * maxTilt;
+
+  //   container.style.transform = perspective(1000px) rotateX(${tiltX}deg) rotateY(${tiltY}deg);
+
+  //   setTimeout(() => {
+  //     container.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
+  //   }, 111);
+  //   // click();
+  // };
+  const handleClick = (e: React.MouseEvent | React.TouchEvent | React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const container = wrapRef.current;
     if (!container) return;
 
@@ -32,7 +66,6 @@ const Clicker = (props: IClicker) => {
 
     const deltaX = clientX - centerX;
     const deltaY = clientY - centerY;
-
     const maxTilt = 15; // Максимальный угол наклона
     const tiltX = (deltaY / rect.height) * maxTilt;
     const tiltY = -(deltaX / rect.width) * maxTilt;
@@ -41,12 +74,26 @@ const Clicker = (props: IClicker) => {
 
     setTimeout(() => {
       container.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg)';
-    }, 111);
-    // click();
-  };
+    }, 111)
 
+    const relativeX = clientX - rect.left;
+    const relativeY = clientY - rect.top;
+
+    const clickCoordinates = { x: relativeX, y: relativeY };
+    setList(prevList => [...prevList, clickCoordinates]);
+
+    setTimeout(() => {
+      setList(prevList => prevList.filter(item => item !== clickCoordinates));
+    }, 1000)
+  }
+
+  console.log(list)
+  
   return (
     <div className={styles.wrap} ref={wrapRef}>
+      {list.map((item) => (
+        <IncrementFlash x={item.x} y={item.y} key={uuidv4()} />
+      ))}
       <div className={styles.container}>
         <div
           className={styles.image_wrap}

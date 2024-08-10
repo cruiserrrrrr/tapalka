@@ -1,6 +1,6 @@
 import styles from "./coins-counter.module.scss";
-import coinImage from "../../assets/coin.png";
-import splashImage from "../../assets/total-coins-splash.png";
+import coinImage from "../../assets/images/coin.png";
+import splashImage from "../../assets/images/total-coins-splash.png";
 import { useEffect } from "react";
 import useWebSocket from "react-use-websocket";
 

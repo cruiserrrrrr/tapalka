@@ -1,0 +1,41 @@
+.increment_flash {
+  position: absolute;
+  width: auto;
+  height: auto;
+  z-index: 100;
+  animation: opacityAnimation 1.1s infinite;
+  pointer-events: none;
+  user-select: none;
+
+  .container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+
+    .text {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+
+      font-family: "Japanese 3017";
+      font-size: 36px;
+      font-weight: 400;
+      line-height: 41.41px;
+    }
+  }
+
+}
+
+@keyframes opacityAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}

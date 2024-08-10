@@ -1,9 +1,10 @@
 .container {
   position: relative;
   min-height: 100dvh;
-  background-image: url('../assets/bg-splash.png');
+  background-image: url('../assets/images/bg-splash.png');
   background-repeat: no-repeat;
   background-size: contain;
   background-position: 100% 80%;
   padding: 0 22px;
+  overflow-x: hidden;
 }

@@ -15,7 +15,6 @@ function App() {
       <Routes>
         <Route path="/" element={<Wild />} index={false} />
       </Routes>
-      {/* <Navigation /> */}
     </div>
   )
 }
