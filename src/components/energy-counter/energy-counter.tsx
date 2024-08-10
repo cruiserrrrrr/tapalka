@@ -31,6 +31,7 @@ const EnergyCounter = (props: IEnergyCounter) => {
     <div className={styles.wrap}>
       <p className={styles.text}>Your Energy: {energyPercent}% id</p>
       <p>searchParamsString</p>
+      <p>{searchParamsString}</p>
       <div className={styles.container}>
         <p className={styles.text}>{defaultEnergy}</p>
         <div
