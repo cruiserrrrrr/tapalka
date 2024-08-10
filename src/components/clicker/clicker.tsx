@@ -86,8 +86,6 @@ const Clicker = (props: IClicker) => {
       setList(prevList => prevList.filter(item => item !== clickCoordinates));
     }, 1000)
   }
-
-  console.log(list)
   
   return (
     <div className={styles.wrap} ref={wrapRef}>
