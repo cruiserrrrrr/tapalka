@@ -29,7 +29,7 @@ const EnergyCounter = (props: IEnergyCounter) => {
   // @ts-ignore
 
   const initData = initInitData();
-  console.log(initData, 'initData')
+  console.log(initData?.user?.id, 'initData')
   // const parsedinitData = JSON.parse(initData);
   // const userParsed = JSON.parse(parsedinitData.user).id;
   // const initDataRaw = new URLSearchParams([
