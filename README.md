@@ -3,8 +3,8 @@
 - Ссылка на github: [github](https://github.com/cruiserrrrrr/tapalka)
 
 ## Для запуска проекта локально:
-npm install 
-npm run dev
+- npm install 
+- npm run dev
 
 ##
 
