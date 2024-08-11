@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import styles from "./energy-counter.module.scss";
 import useWebSocket from "react-use-websocket";
 
@@ -15,13 +15,17 @@ const EnergyCounter = (props: IEnergyCounter) => {
   const { sendMessage, lastMessage, readyState } = useWebSocket(socketURL);
 
   const energyPercent = Math.round((defaultEnergy / 4500) * 100);
+
+  const coinsRef = useRef(defaultEnergy);
+  coinsRef.current = defaultEnergy;
+
   useEffect(() => {
     if (readyState !== 1) return
     const interval = setInterval(() => {
-      sendMessage(JSON.stringify({ energy: defaultEnergy - 1 }))
+      sendMessage(JSON.stringify({ energy: coinsRef.current - 1 }))
     }, 5000);
     return () => clearInterval(interval)
-  }, []);
+  }, [readyState]);
 
   return (
     <div className={styles.wrap}>

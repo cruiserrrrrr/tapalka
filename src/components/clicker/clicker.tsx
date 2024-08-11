@@ -9,7 +9,6 @@ interface IClicker {
 }
 
 const Clicker = (props: IClicker) => {
-  // @ts-ignore
   const { click } = props;
 
   const [list, setList] = useState<any[]>([]);
@@ -46,7 +45,7 @@ const Clicker = (props: IClicker) => {
   //   }, 111);
   //   // click();
   // };
-  const handleClick = (e: React.MouseEvent | React.TouchEvent | React.MouseEvent<HTMLDivElement, MouseEvent> | Touch) => {
+  const handleClick = (e:  React.TouchEvent | Touch) => {
     const container = wrapRef.current;
     if (!container) return;
 
@@ -85,15 +84,12 @@ const Clicker = (props: IClicker) => {
     setTimeout(() => {
       setList(prevList => prevList.filter(item => item !== clickCoordinates));
     }, 1000)
-    // click();
+    click();
   }
 
   const handleTouchStart = (event: React.TouchEvent) => {
-    // Перебираем все точки касания
     for (let i = 0; i < event.touches.length; i++) {
       const touch: Touch = event.touches[i];
-      // Вызываем вашу функцию с нужными параметрами
-      console.log(touch, 'touch');
       handleClick(touch);
     }
   };

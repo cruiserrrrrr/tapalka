@@ -1,7 +1,7 @@
 import styles from "./coins-counter.module.scss";
 import coinImage from "../../assets/images/coin.png";
 import splashImage from "../../assets/images/total-coins-splash.png";
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import useWebSocket from "react-use-websocket";
 
 interface ICoinsCounter {
@@ -13,15 +13,18 @@ const CoinsCounter = (props: ICoinsCounter) => {
   const { defaultCoins, socketURL } = props;
   //@ts-ignore
   const { sendMessage, lastMessage, readyState } = useWebSocket(socketURL);
+  
+  const coinsRef = useRef(defaultCoins); 
+  coinsRef.current = defaultCoins;
 
   useEffect(() => {
-    if (readyState !== 1) return
+    if (readyState !== 1) return;
     const interval = setInterval(() => {
-      sendMessage(JSON.stringify({ coins: defaultCoins + 1 }))
+      sendMessage(JSON.stringify({ coins: coinsRef.current }));
     }, 5000);
-    return () => clearInterval(interval)
-  }, [])
 
+    return () => clearInterval(interval);
+  }, [readyState]);
   return (
     <div className={styles.wrap}>
       <div className={styles.container}>

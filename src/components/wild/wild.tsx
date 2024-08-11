@@ -5,7 +5,7 @@ import EnergyCounter from "../energy-counter/energy-counter";
 import styles from "./wild.module.scss";
 import { getCoins } from "../../utils/api/get-coins";
 import Shadows from "../shadows/shadows";
-import { initInitData } from '@telegram-apps/sdk';
+// import { initInitData } from '@telegram-apps/sdk';
 
 const Wild = () => {
 
@@ -13,9 +13,9 @@ const Wild = () => {
   const [energy, setEnergy] = useState<number>(0);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  const initData = initInitData();
-  const userID = initData?.user?.id
-  // const userID = 123
+  // const initData = initInitData();
+  // const userID = initData?.user?.id
+  const userID = 123
   const backURLEnergy = `${import.meta.env.VITE_BACKEND_WS_URL}/energy_gain/${userID}/`;
   const backURLCoins = `${import.meta.env.VITE_BACKEND_WS_URL}/coins_gain/${userID}/`;
 
