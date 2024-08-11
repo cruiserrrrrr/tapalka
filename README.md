@@ -1,9 +1,12 @@
 # Tapalka
 - Ссылка на приложение: [tapalka](t.me/ITWorkinTest_bot/Tapalka)
 - Ссылка на github: [github](https://github.com/cruiserrrrrr/tapalka)
+
 ## Для запуска проекта локально:
 npm install 
 npm run dev
+
+##
 
 Фронтенд захостил на vercel: [tapalka](https://tapalka.vercel.app/) https://tapalka.vercel.app/
 Фронент не будет работать вне телеграмма.
