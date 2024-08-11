@@ -11,16 +11,16 @@ interface ICoinsCounter {
 
 const CoinsCounter = (props: ICoinsCounter) => {
   const { defaultCoins, socketURL } = props;
-  //@ts-ignore
-  const { sendMessage, lastMessage, readyState } = useWebSocket(socketURL);
-  
-  const coinsRef = useRef(defaultCoins); 
+  const { sendMessage, readyState } = useWebSocket(socketURL);
+
+  const coinsRef = useRef(defaultCoins);
   coinsRef.current = defaultCoins;
 
   useEffect(() => {
     if (readyState !== 1) return;
     const interval = setInterval(() => {
       sendMessage(JSON.stringify({ coins: coinsRef.current }));
+      // можно и уменьшить 
     }, 5000);
 
     return () => clearInterval(interval);

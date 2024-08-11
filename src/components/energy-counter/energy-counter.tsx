@@ -5,14 +5,11 @@ import useWebSocket from "react-use-websocket";
 interface IEnergyCounter {
   defaultEnergy: number;
   socketURL: string;
-  handleClick?: () => void;
 }
 
 const EnergyCounter = (props: IEnergyCounter) => {
-  //@ts-ignore
-  const { defaultEnergy, socketURL, handleClick } = props
-  //@ts-ignore
-  const { sendMessage, lastMessage, readyState } = useWebSocket(socketURL);
+  const { defaultEnergy, socketURL } = props
+  const { sendMessage, readyState } = useWebSocket(socketURL);
 
   const energyPercent = Math.round((defaultEnergy / 4500) * 100);
 
@@ -22,7 +19,8 @@ const EnergyCounter = (props: IEnergyCounter) => {
   useEffect(() => {
     if (readyState !== 1) return
     const interval = setInterval(() => {
-      sendMessage(JSON.stringify({ energy: coinsRef.current - 1 }))
+      sendMessage(JSON.stringify({ energy: coinsRef.current - 1 }));
+      // можно и уменьшить 
     }, 5000);
     return () => clearInterval(interval)
   }, [readyState]);
