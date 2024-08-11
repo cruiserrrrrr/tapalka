@@ -16,8 +16,11 @@ const CoinsCounter = (props: ICoinsCounter) => {
 
   useEffect(() => {
     if (readyState !== 1) return
-    sendMessage(JSON.stringify({ coins: defaultCoins + 1 }))
-  }, [defaultCoins])
+    const interval = setInterval(() => {
+      sendMessage(JSON.stringify({ coins: defaultCoins + 1 }))
+    }, 5000);
+    return () => clearInterval(interval)
+  }, [])
 
   return (
     <div className={styles.wrap}>

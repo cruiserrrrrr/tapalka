@@ -17,8 +17,11 @@ const EnergyCounter = (props: IEnergyCounter) => {
   const energyPercent = Math.round((defaultEnergy / 4500) * 100);
   useEffect(() => {
     if (readyState !== 1) return
-    sendMessage(JSON.stringify({ energy: defaultEnergy - 1 }))
-  }, [defaultEnergy]);
+    const interval = setInterval(() => {
+      sendMessage(JSON.stringify({ energy: defaultEnergy - 1 }))
+    }, 5000);
+    return () => clearInterval(interval)
+  }, []);
 
   return (
     <div className={styles.wrap}>
