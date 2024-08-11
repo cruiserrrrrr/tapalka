@@ -1,6 +1,6 @@
 import styles from "./clicker.module.scss";
 import clickerImage from "../../assets/images/blackberry.png";
-import { useRef, useState } from "react";
+import { Touch, useRef, useState } from "react";
 import IncrementFlash from "./Increment-flash/Increment-flash";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -46,7 +46,7 @@ const Clicker = (props: IClicker) => {
   //   }, 111);
   //   // click();
   // };
-  const handleClick = (e: React.MouseEvent | React.TouchEvent | React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+  const handleClick = (e: React.MouseEvent | React.TouchEvent | React.MouseEvent<HTMLDivElement, MouseEvent> | Touch) => {
     const container = wrapRef.current;
     if (!container) return;
 
@@ -91,8 +91,10 @@ const Clicker = (props: IClicker) => {
   const handleTouchStart = (event: React.TouchEvent) => {
     // Перебираем все точки касания
     for (let i = 0; i < event.touches.length; i++) {
+      const touch: Touch = event.touches[i];
       // Вызываем вашу функцию с нужными параметрами
-      handleClick(event);
+      console.log(touch, 'touch');
+      handleClick(touch);
     }
   };
 
