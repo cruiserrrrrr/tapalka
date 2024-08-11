@@ -85,13 +85,12 @@ const Clicker = (props: IClicker) => {
     setTimeout(() => {
       setList(prevList => prevList.filter(item => item !== clickCoordinates));
     }, 1000)
-    click();
+    // click();
   }
 
   const handleTouchStart = (event: React.TouchEvent) => {
     // Перебираем все точки касания
     for (let i = 0; i < event.touches.length; i++) {
-      const touch = event.touches[i];
       // Вызываем вашу функцию с нужными параметрами
       handleClick(event);
     }
