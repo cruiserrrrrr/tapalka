@@ -87,7 +87,16 @@ const Clicker = (props: IClicker) => {
     }, 1000)
     click();
   }
-  
+
+  const handleTouchStart = (event: React.TouchEvent) => {
+    // Перебираем все точки касания
+    for (let i = 0; i < event.touches.length; i++) {
+      const touch = event.touches[i];
+      // Вызываем вашу функцию с нужными параметрами
+      handleClick(event);
+    }
+  };
+
   return (
     <div className={styles.wrap} ref={wrapRef}>
       {list.map((item) => (
@@ -96,7 +105,7 @@ const Clicker = (props: IClicker) => {
       <div className={styles.container}>
         <div
           className={styles.image_wrap}
-          onTouchStart={handleClick}
+          onTouchStart={handleTouchStart}
         >
           <img
             src={clickerImage}
