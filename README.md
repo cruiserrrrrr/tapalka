@@ -8,7 +8,7 @@
 
 ##
 
-Фронтенд захостил на vercel: [tapalka](https://tapalka.vercel.app/) https://tapalka.vercel.app/
+Фронтенд захостил на vercel: [tapalka](https://tapalka.vercel.app/)
 Фронент не будет работать вне телеграмма.
 Для запуска проекта локально в файле в файле wild.tsx  изменить переменные, в файле есть инструкция.
 
