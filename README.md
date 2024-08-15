@@ -1,5 +1,5 @@
 # Tapalka
-- Ссылка на приложение: [tapalka](t.me/ITWorkinTest_bot/Tapalka)
+- Ссылка на приложение: [tapalka](https://t.me/ITWorkinTest_bot/Tapalka)
 - Ссылка на github: [github](https://github.com/cruiserrrrrr/tapalka)
 
 ## Для запуска проекта локально:
